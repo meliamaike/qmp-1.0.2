@@ -1,0 +1,96 @@
+<!-----HEADER----->
+<header class="main-header">
+  <img src="/assets/logo2.png" alt="logotipo" class="logo">
+
+
+  <!-----NAV BAR----->
+  <input type="checkbox" id="open-nav"> <!-- al tocarlo, se selecciona la checkbox.en css escribo#abre-nav:checked ~.main-nav  le digo asi que le de estilo al HERMANO de abre nav que es .main-nav. -->
+
+  <label for="open-nav" class="toggle-nav">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </label>
+
+
+  <nav class="main-nav">
+    <ul class="nav">
+      <li>
+        <!--para poner un botoncito para cerrar. abre-nav es un id!!!!-->
+        <!--cuando yo apreto el boton, este se deselecciona. y se cierra la cosa-->
+        <label class="close" for="open-nav">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </label>
+      </li>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#about"><span>Shrine</span></a></li>
+      <li><a href="#team">Equipo</a></li>
+      <li><a href="#contact">Contacto</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+
+<!-- TYPES OF WEATHERS -->
+
+<div id="weather">
+  <div class="container">
+    <h2 class="weather-title">Tus prendas</h2>
+
+
+    <ul class="students-all">
+      <% @prendas.each do |prenda| %>
+        <li class="student">
+          <%= image_tag("/assets/placeholder.png")%>
+          <h3><%= link_to prenda.tipo, prenda%></h3>
+        </li>
+      <% end %>
+    </ul>
+
+    <%= link_to "Crear nueva prenda", new_prenda_path, class:"new-item-btn" %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-----FOOTER----->
+<footer class="main-footer">
+  <ul class="footer-list">
+    <li>
+      <a>
+        <i class="fa fa-youtube-play" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li>
+      <a>
+        <i class="fa fa-linkedin" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li>
+      <a>
+        <i class="fa fa-instagram"></i>
+      </a>
+    </li>
+    <li>
+      <a>
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+  <div class="footer-text">
+    <a>Términos y Condiciones</a>
+    <h4>|</h4>
+    <a>Políticas de Privacidad</a>
+  </div>
+  <p> © 2021, QueMePongo </p>
+  <img src="/assets/logo2.png" alt="logotipo" class="footer-logo">
+</footer>
+
+
+

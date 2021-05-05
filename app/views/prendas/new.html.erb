@@ -1,0 +1,28 @@
+<!--
+
+  Los formularios, ya sea que los usamos para crear (insertar en la base)
+  o para modificar un objeto (modificar en la base), van a tener que estar siempre
+  asociados a un objeto existente (no necesiamente sacado de la base)
+
+  Recordar que:
+    Prenda.create (instancia e inserta en la base) no es lo mismo que
+    Prenda.new (solamente instancia, no inserta)
+
+-->
+
+<%= form_for @prenda do |f| %> <!-- esto que está acá se llama FormBuilder (rails) -->
+
+  <%= f.select :tipo, Prenda.tipos.keys, {} %>
+  <%= f.select :categoria, Prenda.categoria.keys, {} %>
+  <%= f.select :material, Prenda.materials.keys, {} %>
+  <%= f.select :color_primario, Prenda.color_primarios.keys, {} %>
+  <%= f.select :color_secundario, Prenda.color_secundarios.keys, {} %>
+  <%= f.text_area :descripcion %>
+  <%= f.label :imagen %>
+  <%= f.file_field :imagen %>
+
+
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Volver atrás", prendas_path(@prenda) %>

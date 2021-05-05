@@ -1,0 +1,20 @@
+<%= form_for @prenda do |f| %>
+
+  <%= f.select :tipo, Prenda.tipos.keys, {} %>
+  <%= f.select :categoria, Prenda.categoria.keys, {} %>
+  <%= f.select :material, Prenda.materials.keys, {} %>
+  <%= f.select :color_primario, Prenda.color_primarios.keys, {} %>
+  <%= f.select :color_secundario, Prenda.color_secundarios.keys, {} %>
+
+
+  <% if @prenda.imagen.attached? %>
+    <h4>Imagen:</h4>
+    <%= image_tag(@prenda.imagen) %>
+
+  <%end %>
+
+  <%= f.text_area :descripcion %>
+  <%= f.submit  %>
+<% end %>
+
+<button><%=link_to "Volver atrás", prendas_path(@prenda) %></button>

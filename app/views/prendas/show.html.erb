@@ -1,0 +1,17 @@
+<h3>Tipo:<%= @prenda.tipo %></h3>
+<h3><%= @prenda.categoria %></h3>
+<h3><%= @prenda.material %></h3>
+<h3><%= @prenda.color_primario %></h3>
+<h3><%= @prenda.color_secundario %></h3>
+<h3><%= @prenda.descripcion %></h3>
+
+<% if @prenda.imagen.attached? %>
+  <h4>Imagen:</h4>
+  <%= image_tag(@prenda.imagen) %>
+
+<%end %>
+
+
+<%= link_to "Editar esta prenda", edit_prenda_path(@prenda) %>
+<%= link_to "Borrar esta prenda", @prenda, method: "delete", data: {confirm: 'Estas seguro?'} %>
+<%= link_to "Volver atrás", prendas_path(@prenda) %>
