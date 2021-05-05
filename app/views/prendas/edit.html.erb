@@ -1,20 +1,28 @@
-<%= form_for @prenda do |f| %>
 
-  <%= f.select :tipo, Prenda.tipos.keys, {} %>
-  <%= f.select :categoria, Prenda.categoria.keys, {} %>
-  <%= f.select :material, Prenda.materials.keys, {} %>
-  <%= f.select :color_primario, Prenda.color_primarios.keys, {} %>
-  <%= f.select :color_secundario, Prenda.color_secundarios.keys, {} %>
+<div id="create-item">
+  <div class="create-item-container">
+    <h2 class="create-title-contact">Editar prenda</h2>
+    <div class="create-form">
+      <%= form_for @prenda do |f|%>
+
+        <%= f.select :tipo, Prenda.tipos.keys, {}, {class:'form-items', prompt: "Please Select" } %>
+        <%= f.select :categoria, Prenda.categoria.keys, {},{class:'form-items' } %>
+        <%= f.select :material, Prenda.materials.keys, {}, {class:'form-items' } %>
+        <%= f.select :color_primario, Prenda.color_primarios.keys, {}, {class:'form-items' } %>
+        <%= f.select :color_secundario, Prenda.color_secundarios.keys, {}, {class:'form-items' } %>
+        <%= f.text_area :descripcion, {class:'form-items', placeholder:'Descripción' } %>
+        <% if @prenda.imagen.attached? %>
+          <%= f.label :imagen,{class:'form-items-title' }  %>
+          <%= image_tag(@prenda.imagen) %>
+        <%end %>
+        <%= f.submit 'Guardar cambios', {class:'btn-save-changes'} %>
+
+        <%= link_to "Cancelar", prendas_path(@prenda) , class: 'btn-save-changes-cancel'%>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
-  <% if @prenda.imagen.attached? %>
-    <h4>Imagen:</h4>
-    <%= image_tag(@prenda.imagen) %>
 
-  <%end %>
 
-  <%= f.text_area :descripcion %>
-  <%= f.submit  %>
-<% end %>
-
-<button><%=link_to "Volver atrás", prendas_path(@prenda) %></button>

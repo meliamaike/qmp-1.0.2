@@ -1,17 +1,33 @@
-<h3>Tipo:<%= @prenda.tipo %></h3>
-<h3><%= @prenda.categoria %></h3>
-<h3><%= @prenda.material %></h3>
-<h3><%= @prenda.color_primario %></h3>
-<h3><%= @prenda.color_secundario %></h3>
-<h3><%= @prenda.descripcion %></h3>
+<div class="prenda-card">
+  <div class="prenda-data">
+    <h4>Tipo:<%= @prenda.tipo %></h4>
+    <h4>Categoría: <%= @prenda.categoria %></h4>
+    <h4>Material: <%= @prenda.material %></h4>
+    <h4>Color primario: <%= @prenda.color_primario %></h4>
+    <h4>Color secundario: <%= @prenda.color_secundario %></h4>
+    <h4>Descripción: <%= @prenda.descripcion %></h4>
+<!--    <h4>Imagen:</h4>-->
+  </div>
+  <div class="prenda-image">
+    <% if @prenda.imagen.attached? %>
 
-<% if @prenda.imagen.attached? %>
-  <h4>Imagen:</h4>
-  <%= image_tag(@prenda.imagen) %>
+      <%= image_tag(@prenda.imagen) %>
+    <%else %>
+      <%=image_tag("/assets/placeholder.png")%>
+    <%end %>
+  </div>
 
-<%end %>
+  <div class="btn-edit-prenda">
+    <%= link_to "Editar", edit_prenda_path(@prenda) %>
+  </div>
+  <div class="btn-delete-prenda">
+    <%= link_to "Borrar", @prenda, method: "delete", data: {confirm: 'Estas seguro?'} %>
+  </div>
+  <div class="btn-return">
+    <%= link_to "Volver atrás", prendas_path(@prenda) %>
+  </div>
+
+</div>
 
 
-<%= link_to "Editar esta prenda", edit_prenda_path(@prenda) %>
-<%= link_to "Borrar esta prenda", @prenda, method: "delete", data: {confirm: 'Estas seguro?'} %>
-<%= link_to "Volver atrás", prendas_path(@prenda) %>
+

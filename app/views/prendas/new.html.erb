@@ -10,19 +10,27 @@
 
 -->
 
-<%= form_for @prenda do |f| %> <!-- esto que está acá se llama FormBuilder (rails) -->
+<div id="create-item">
+  <div class="create-item-container">
+    <h2 class="create-title-contact">Crear prenda</h2>
+      <div class="create-form">
+        <%= form_for @prenda do |f|%>
 
-  <%= f.select :tipo, Prenda.tipos.keys, {} %>
-  <%= f.select :categoria, Prenda.categoria.keys, {} %>
-  <%= f.select :material, Prenda.materials.keys, {} %>
-  <%= f.select :color_primario, Prenda.color_primarios.keys, {} %>
-  <%= f.select :color_secundario, Prenda.color_secundarios.keys, {} %>
-  <%= f.text_area :descripcion %>
-  <%= f.label :imagen %>
-  <%= f.file_field :imagen %>
+          <%= f.select :tipo, Prenda.tipos.keys, {}, {class:'form-items', prompt: "Please Select" } %>
+          <%= f.select :categoria, Prenda.categoria.keys, {},{class:'form-items' } %>
+          <%= f.select :material, Prenda.materials.keys, {}, {class:'form-items' } %>
+          <%= f.select :color_primario, Prenda.color_primarios.keys, {}, {class:'form-items' } %>
+          <%= f.select :color_secundario, Prenda.color_secundarios.keys, {}, {class:'form-items' } %>
+          <%= f.text_area :descripcion, {class:'form-items', placeholder:'Descripción' } %>
+          <%= f.label :imagen,{class:'form-items-title' }  %>
+          <%= f.file_field :imagen, {class:'btn-item-image'}%>
+          <%= f.submit 'Crear', {class:'btn-item-submit'} %>
+
+          <%= link_to "Cancelar", prendas_path(@prenda) , class: 'btn-item-cancel'%>
+        <% end %>
+      </div>
+  </div>
+</div>
 
 
-  <%= f.submit %>
-<% end %>
 
-<%= link_to "Volver atrás", prendas_path(@prenda) %>
